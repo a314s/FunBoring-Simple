@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NaviTechAid - Technical Documentation & Training Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="mobile.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* One-page specific styles */
+        :root {
+            --primary-color: #0066cc;
+            --secondary-color: #003366;
+            --accent-color: #00aaff;
+            --text-color: #333333;
+            --light-text: #ffffff;
+            --background-color: #f5f7fa;
+            --card-background: #ffffff;
+            --transition-speed: 0.3s;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-color);
+            background: linear-gradient(-45deg, #f5f7fa, #e8f0ff, #f0f8ff, #f5faff);
+            background-size: 400% 400%;
+            animation: gradient-animation 15s ease infinite;
+            overflow-x: hidden;
+        }
+        
+        .one-page-container {
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Hero Section */
+        .hero-one-page {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: var(--light-text);
+            text-align: center;
+            padding: 0 5%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .texture-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('texture.png');
+            background-size: cover;
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .hero-logo {
+            max-width: 280px;
+            margin-bottom: 2rem;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            z-index: 1;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero-description {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+        
+        .hero-cta {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+        
+        .hero-cta:hover {
+            background-color: #0097e6;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            z-index: 2;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+        
+        /* Services Section */
+        .services-one-page {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            padding: 5rem 5%;
+            background-color: #f8fafc;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .service-card-one {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .service-card-one:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 102, 204, 0.15);
+        }
+        
+        .service-icon-one {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .service-icon-one img {
+            width: 100%;
+            height: auto;
+        }
+        
+        .service-card-one h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .service-card-one p {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        /* Process Section */
+        .process-one-page {
+            padding: 5rem 5%;
+            background-color: #f0f4f8;
+            text-align: center;
+        }
+        
+        .process-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .process-steps-one {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .process-step-one {
+            flex: 1;
+            min-width: 200px;
+            max-width: 220px;
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        
+        .process-step-one::after {
+            content: "→";
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            font-size: 2rem;
+            color: var(--primary-color);
+            transform: translateY(-50%);
+        }
+        
+        .process-step-one:last-child::after {
+            display: none;
+        }
+        
+        .step-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+        }
+        
+        .step-icon img {
+            width: 100%;
+            height: auto;
+        }
+        
+        .process-step-one h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .process-step-one p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        /* About Section */
+        .about-one-page {
+            padding: 5rem 5%;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            text-align: center;
+        }
+        
+        .about-content-one {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .about-one-page h2 {
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            color: var(--accent-color);
+        }
+        
+        .about-one-page p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .feature-item {
+            flex: 1;
+            min-width: 200px;
+            max-width: 280px;
+            text-align: center;
+        }
+        
+        .feature-item h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .feature-item p {
+            font-size: 1rem;
+        }
+        
+        /* Contact Section */
+        .contact-one-page {
+            padding: 5rem 5%;
+            background-color: #fff;
+            text-align: center;
+        }
+        
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .contact-one-page h2 {
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            color: var (--secondary-color);
+        }
+        
+        .contact-info-one {
+            margin-bottom: 2rem;
+        }
+        
+        .contact-info-one p {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .contact-info-one a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-info-one a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-link {
+            color: var(--primary-color);
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .social-link:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Footer */
+        .footer-one-page {
+            background-color: #f0f4f8;
+            padding: 2rem 5%;
+            text-align: center;
+        }
+        
+        .footer-logo-one {
+            max-width: 150px;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-one-page p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .services-one-page {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .hero-description {
+                font-size: 1.3rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-logo {
+                max-width: 220px;
+            }
+            
+            .hero-title {
+                font-size: 2.3rem;
+            }
+            
+            .hero-description {
+                font-size: 1.1rem;
+            }
+            
+            .process-step-one::after {
+                right: auto;
+                bottom: -30px;
+                top: auto;
+                left: 50%;
+                transform: translateX(-50%) rotate(90deg);
+            }
+            
+            .services-one-page {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-description {
+                font-size: 1rem;
+            }
+            
+            .hero-cta {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="texture-overlay"></div>
+    <div class="one-page-container">
+        <!-- Hero Section -->
+        <section class="hero-one-page">
+            <img src="logo navitechaid-04.svg" alt="NaviTechAid Logo" class="hero-logo">
+            <div class="hero-content">
+                <h1 class="hero-title">Innovative solutions to aid the flow to information in your company.</h1>
+                <p class="hero-description">We transform complex technical knowledge into practical tools, simplifying processes, and ensuring the right information reaches the right people.</p>
+                <div class="language-selector">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="he">HE</button>
+                </div>
+                <a href="#contact" class="hero-cta">Contact Us</a>
+            </div>
+            <div class="scroll-indicator">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 10L12 15L17 10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </section>
+        
+        <!-- Core Services Section -->
+        <section id="services" class="services-one-page">
+            <div class="service-card-one">
+                <div class="service-icon-one">
+                    <img src="R&D.svg" alt="Knowledge Preservation">
+                </div>
+                <h3>Technical Animations & Visual Simulations</h3>
+                <p>Creating clear 2D & 3D animations for assembly, calibration, and maintenance. Visual representations of invisible processes like optics and electromagnetism.</p>
+            </div>
+            
+            <div class="service-card-one">
+                <div class="service-icon-one">
+                    <img src="Engineering & NPI.svg" alt="Technical Training">
+                </div>
+                <h3>Customized AI Solutions</h3>
+                <p>Smart AI systems to enhance knowledge accessibility and workflow guidance. Offline Large Language Models (LLM) for easy internal knowledge retrieval.</p>
+            </div>
+            
+            <div class="service-card-one">
+                <div class="service-icon-one">
+                    <img src="Manufacturing.svg" alt="AI Solutions">
+                </div>
+                <h3>Information Flow Between Departments</h3>
+                <p>Bridging R&D and Manufacturing – translating engineering knowledge into practical instructions. System integration for streamlined internal information flow.</p>
+            </div>
+            
+            <div class="service-card-one">
+                <div class="service-icon-one">
+                    <img src="Service.svg" alt="Technical Writing">
+                </div>
+                <h3>Process Analysis & Optimization</h3>
+                <p>On-site or remote process analysis to identify inefficiencies and improve workflows. Optimizing production, design, and prototyping to reduce errors and save time.</p>
+            </div>
+            
+            <div class="service-card-one">
+                <div class="service-icon-one">
+                    <img src="Marketing.svg" alt="Technical Animations">
+                </div>
+                <h3>Knowledge Retention & Training</h3>
+                <p>Creating structured and accessible knowledge repositories for all departments. Developing training programs to ensure accurate knowledge transfer.</p>
+            </div>
+            
+            <div class="service-card-one">
+                <div class="service-icon-one">
+                    <img src="Installation & Integration.svg" alt="Effectiveness Processes">
+                </div>
+                <h3>Technical Writing & Translation</h3>
+                <p>Producing professional documentation, including videos, PDFs, and animations. Translating technical documents into multiple languages with cultural adaptation.</p>
+            </div>
+        </section>
+        
+        <!-- Process Section -->
+        <section class="process-one-page">
+            <div class="process-content">
+                <h2>Our Process</h2>
+                <p>We follow a simple yet effective approach to deliver exceptional results.</p>
+                
+                <div class="process-steps-one">
+                    <div class="process-step-one">
+                        <div class="step-icon">
+                            <img src="wired-outline-1142-form-sheet-questionnaire.gif" alt="Assessment" class="animated-icon">
+                        </div>
+                        <h3>Assessment</h3>
+                        <p>We analyze your needs and identify knowledge gaps</p>
+                    </div>
+                    
+                    <div class="process-step-one">
+                        <div class="step-icon">
+                            <img src="wired-outline-1020-rules-book-guideline (1).gif" alt="Development" class="animated-icon">
+                        </div>
+                        <h3>Development</h3>
+                        <p>We create customized training and documentation solutions</p>
+                    </div>
+                    
+                    <div class="process-step-one">
+                        <div class="step-icon">
+                            <img src="wired-outline-1326-command-window-line copy.gif" alt="Implementation" class="animated-icon">
+                        </div>
+                        <h3>Implementation</h3>
+                        <p>We deploy solutions and provide training</p>
+                    </div>
+                    
+                    <div class="process-step-one">
+                        <div class="step-icon">
+                            <img src="wired-outline-749-interface-settings copy.gif" alt="Optimization" class="animated-icon">
+                        </div>
+                        <h3>Optimization</h3>
+                        <p>We continuously improve based on feedback and results</p>
+                    </div>
+                    
+                    <div class="process-step-one">
+                        <div class="step-icon">
+                            <img src="wired-outline-978-project-management.gif" alt="Management" class="animated-icon">
+                        </div>
+                        <h3>Management</h3>
+                        <p>We ensure long-term success through ongoing support</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- About Section -->
+        <section id="about" class="about-one-page">
+            <div class="about-content-one">
+                <h2>Why Choose Navi Tech Aid?</h2>
+                <p>Our core mission is to ensure technical & practical expertise are not just recorded, but fully understood and communicated to be accessible whenever and wherever they are needed.</p>
+                
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <h3>Bridging Knowledge Gaps</h3>
+                        <p>We delegate critical information across departments, bridging the gap between Engineering, Manufacturing, Finance, and Support.</p>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <h3>Visual Understanding</h3>
+                        <p>Seeing is understanding. We transform complex concepts into illustrations, animations, and structured documentation.</p>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <h3>Long-term Stability</h3>
+                        <p>Clear knowledge transfer reduces errors, improves efficiency, and ensures operational stability regardless of personnel changes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Section -->
+        <section id="contact" class="contact-one-page">
+            <div class="contact-content">
+                <h2>Contact Us</h2>
+                <div class="contact-info-one">
+                    <p>Ready to transform your technical documentation and training?</p>
+                    <p>Email: <a href="mailto:Avi@navitechaid.com">Avi@navitechaid.com</a></p>
+                    <p>Phone: <a href="https://api.whatsapp.com/send/?phone=9720547299396&text&type=phone_number&app_absent=0" target="_blank">053-3795354</a></p>
+                </div>
+                
+                <form class="contact-form" id="contactForm" action="https://formspree.io/f/xbjnkdnv" method="POST">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" rows="4" placeholder="Your Message" required></textarea>
+                    </div>
+                    <input type="hidden" name="_subject" value="NaviTechAid Contact Form Submission">
+                    <input type="hidden" name="_replyto" value="">
+                    <button type="submit" class="submit-btn">Send Message</button>
+                    <p id="form-status"></p>
+                </form>
+                
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/company/navi-techaid/posts/?feedView=all" class="social-link" target="_blank">LinkedIn</a>
+                    <a href="https://api.whatsapp.com/send/?phone=9720547299396&text&type=phone_number&app_absent=0" class="social-link" target="_blank">WhatsApp</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="footer-one-page">
+            <img src="logo spin.svg" alt="NaviTechAid Symbol" class="footer-logo-one">
+            <p>&copy; 2025 NaviTechAid. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Smooth scroll functionality
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Scroll indicator click
+        document.querySelector('.scroll-indicator').addEventListener('click', function() {
+            const servicesSection = document.querySelector('#services');
+            window.scrollTo({
+                top: servicesSection.offsetTop,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Language selector functionality
+        const langButtons = document.querySelectorAll('.lang-btn');
+        langButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                langButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                // Here you would typically switch content based on language
+            });
+        });
+    });
+    </script>
+</body>
+</html>
