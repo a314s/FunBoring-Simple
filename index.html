@@ -33,6 +33,66 @@
             overflow-x: hidden;
         }
         
+        /* RTL Support */
+        body.rtl {
+            direction: rtl;
+            text-align: right;
+        }
+        
+        /* RTL Process Arrows */
+        body.rtl .process-step-one::after {
+            content: "←";
+            right: auto;
+            left: -20px;
+        }
+        
+        /* RTL Hero Content */
+        body.rtl .hero-content {
+            text-align: center;
+            direction: rtl;
+            margin: 0 auto;
+            padding: 0;
+        }
+        
+        body.rtl .hero-title,
+        body.rtl .hero-description {
+            text-align: center;
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+            padding-left: 0;
+            padding-right: 0;
+        }
+        
+        /* Language Selector Styles */
+        .language-selector {
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .lang-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            min-width: 80px;
+        }
+        
+        .lang-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .lang-btn.active {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+        
         .one-page-container {
             max-width: 100%;
             margin: 0;
@@ -67,26 +127,38 @@
             z-index: 0;
         }
         
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            z-index: 1;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        
         .hero-logo {
             max-width: 280px;
             margin-bottom: 2rem;
-        }
-        
-        .hero-content {
-            max-width: 900px;
-            z-index: 1;
         }
         
         .hero-title {
             font-size: 3.5rem;
             margin-bottom: 1.5rem;
             line-height: 1.2;
+            width: 100%;
+            text-align: center;
         }
         
         .hero-description {
             font-size: 1.5rem;
             margin-bottom: 2rem;
             max-width: 800px;
+            width: 100%;
+            text-align: center;
         }
         
         .hero-cta {
@@ -385,6 +457,13 @@
             .hero-description {
                 font-size: 1.3rem;
             }
+            
+            /* RTL specific adjustments for tablets */
+            body.rtl .process-step-one::after {
+                content: "←";
+                right: auto;
+                left: -20px;
+            }
         }
         
         @media (max-width: 768px) {
@@ -408,9 +487,41 @@
                 transform: translateX(-50%) rotate(90deg);
             }
             
+            /* RTL specific adjustments for mobile */
+            body.rtl .process-step-one::after {
+                content: "↓"; /* Use down arrow for both LTR and RTL on mobile */
+                right: auto;
+                left: 50%;
+                bottom: -30px;
+                top: auto;
+                transform: translateX(-50%);
+            }
+            
             .services-one-page {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
+            }
+            
+            .language-selector {
+                flex-direction: row;
+                align-items: center;
+            }
+            
+            .lang-btn {
+                margin-bottom: 0;
+            }
+            
+            /* Ensure service cards look good on mobile */
+            .service-card-one {
+                padding: 1.5rem;
+            }
+            
+            .service-card-one h3 {
+                font-size: 1.2rem;
+            }
+            
+            .service-card-one p {
+                font-size: 0.95rem;
             }
         }
         
@@ -427,6 +538,17 @@
                 padding: 12px 25px;
                 font-size: 1rem;
             }
+            
+            /* Smaller padding for very small screens */
+            .service-card-one {
+                padding: 1.25rem;
+            }
+            
+            /* Ensure language buttons fit on small screens */
+            .lang-btn {
+                padding: 6px 12px;
+                font-size: 0.85rem;
+            }
         }
     </style>
 </head>
@@ -437,11 +559,11 @@
         <section class="hero-one-page">
             <img src="logo navitechaid-04.svg" alt="NaviTechAid Logo" class="hero-logo">
             <div class="hero-content">
-                <h1 class="hero-title">Innovative solutions to aid the flow of information in your company.</h1>
+                <h1 class="hero-title">Innovative AI solutions to aid the flow of information in your company.</h1>
                 <p class="hero-description">We transform complex technical knowledge into practical tools, simplifying processes, and ensuring the right information reaches the right people.</p>
                 <div class="language-selector">
-                    <button class="lang-btn active" data-lang="en">EN</button>
-                    <button class="lang-btn" data-lang="he">HE</button>
+                    <button class="lang-btn active" data-lang="en">English</button>
+                    <button class="lang-btn" data-lang="he">עברית</button>
                 </div>
                 <a href="#contact" class="hero-cta">Contact Us</a>
             </div>
@@ -459,7 +581,7 @@
                     <img src="R&D.svg" alt="Knowledge Preservation">
                 </div>
                 <h3>Technical Animations & Visual Simulations</h3>
-                <p>Creating clear 2D & 3D animations for assembly, calibration, and maintenance. Visual representations of invisible processes like optics and electromagnetism.</p>
+                <p>Creating clear 2D & 3D animations for assembly, calibration, and maintenance.<br>Visual representations of invisible processes like optics and electromagnetism.</p>
             </div>
             
             <div class="service-card-one">
@@ -467,7 +589,7 @@
                     <img src="Engineering & NPI.svg" alt="Technical Training">
                 </div>
                 <h3>Customized AI Solutions</h3>
-                <p>Smart AI systems to enhance knowledge accessibility and workflow guidance. Offline Large Language Models (LLM) for easy internal knowledge retrieval.</p>
+                <p>Smart AI systems to enhance knowledge accessibility and workflow guidance.<br>Offline Large Language Models (LLM) for easy internal knowledge retrieval.</p>
             </div>
             
             <div class="service-card-one">
@@ -475,7 +597,7 @@
                     <img src="Manufacturing.svg" alt="AI Solutions">
                 </div>
                 <h3>Information Flow Between Departments</h3>
-                <p>Bridging R&D and Manufacturing – translating engineering knowledge into practical instructions. System integration for streamlined internal information flow.</p>
+                <p>Bridging R&D and Manufacturing – translating engineering knowledge into practical instructions.<br>System integration for streamlined internal information flow.</p>
             </div>
             
             <div class="service-card-one">
@@ -483,7 +605,7 @@
                     <img src="Service.svg" alt="Technical Writing">
                 </div>
                 <h3>Process Analysis & Optimization</h3>
-                <p>On-site or remote process analysis to identify inefficiencies and improve workflows. Optimizing production, design, and prototyping to reduce errors and save time.</p>
+                <p>On-site or remote process analysis to identify inefficiencies and improve workflows.<br>Optimizing production, design, and prototyping to reduce errors and save time.</p>
             </div>
             
             <div class="service-card-one">
@@ -491,7 +613,7 @@
                     <img src="Marketing.svg" alt="Technical Animations">
                 </div>
                 <h3>Knowledge Retention & Training</h3>
-                <p>Creating structured and accessible knowledge repositories for all departments. Developing training programs to ensure accurate knowledge transfer.</p>
+                <p>Creating structured and accessible knowledge repositories for all departments.<br>Developing training programs to ensure accurate knowledge transfer.</p>
             </div>
             
             <div class="service-card-one">
@@ -499,7 +621,7 @@
                     <img src="Installation & Integration.svg" alt="Effectiveness Processes">
                 </div>
                 <h3>Technical Writing & Translation</h3>
-                <p>Producing professional documentation, including videos, PDFs, and animations. Translating technical documents into multiple languages with cultural adaptation.</p>
+                <p>Producing professional documentation, including videos, PDFs, and animations.<br>Translating technical documents into multiple languages with cultural adaptation.</p>
             </div>
         </section>
         
@@ -620,6 +742,240 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // Translations object
+        const translations = {
+            en: {
+                // Hero section
+                "hero-title": "Innovative AI solutions to aid the flow of information in your company.",
+                "hero-description": "We transform complex technical knowledge into practical tools, simplifying processes, and ensuring the right information reaches the right people.",
+                "contact-us": "Contact Us",
+                
+                // Services section
+                "service-1-title": "Technical Animations & Visual Simulations",
+                "service-1-desc": "Creating clear 2D & 3D animations for assembly, calibration, and maintenance.<br>Visual representations of invisible processes like optics and electromagnetism.",
+                "service-2-title": "Customized AI Solutions",
+                "service-2-desc": "Smart AI systems to enhance knowledge accessibility and workflow guidance.<br>Offline Large Language Models (LLM) for easy internal knowledge retrieval.",
+                "service-3-title": "Information Flow Between Departments",
+                "service-3-desc": "Bridging R&D and Manufacturing – translating engineering knowledge into practical instructions.<br>System integration for streamlined internal information flow.",
+                "service-4-title": "Process Analysis & Optimization",
+                "service-4-desc": "On-site or remote process analysis to identify inefficiencies and improve workflows.<br>Optimizing production, design, and prototyping to reduce errors and save time.",
+                "service-5-title": "Knowledge Retention & Training",
+                "service-5-desc": "Creating structured and accessible knowledge repositories for all departments.<br>Developing training programs to ensure accurate knowledge transfer.",
+                "service-6-title": "Technical Writing & Translation",
+                "service-6-desc": "Producing professional documentation, including videos, PDFs, and animations.<br>Translating technical documents into multiple languages with cultural adaptation.",
+                
+                // Process section
+                "process-title": "Our Process",
+                "process-desc": "We follow a simple yet effective approach to deliver exceptional results.",
+                "process-1-title": "Assessment",
+                "process-1-desc": "We analyze your needs and identify knowledge gaps",
+                "process-2-title": "Development",
+                "process-2-desc": "We create customized training and documentation solutions",
+                "process-3-title": "Implementation",
+                "process-3-desc": "We deploy solutions and provide training",
+                "process-4-title": "Optimization",
+                "process-4-desc": "We continuously improve based on feedback and results",
+                "process-5-title": "Management",
+                "process-5-desc": "We ensure long-term success through ongoing support",
+                
+                // About section
+                "about-title": "Why Choose Navi Tech Aid?",
+                "about-desc": "Our core mission is to ensure technical & practical expertise are not just recorded, but fully understood and communicated to be accessible whenever and wherever they are needed.",
+                "feature-1-title": "Bridging Knowledge Gaps",
+                "feature-1-desc": "We delegate critical information across departments, bridging the gap between Engineering, Manufacturing, Finance, and Support.",
+                "feature-2-title": "Visual Understanding",
+                "feature-2-desc": "Seeing is understanding. We transform complex concepts into illustrations, animations, and structured documentation.",
+                "feature-3-title": "Long-term Stability",
+                "feature-3-desc": "Clear knowledge transfer reduces errors, improves efficiency, and ensures operational stability regardless of personnel changes.",
+                
+                // Contact section
+                "contact-title": "Contact Us",
+                "contact-ready": "Ready to transform your technical documentation and training?",
+                "contact-email": "Email:",
+                "contact-phone": "Phone:",
+                "form-name": "Your Name",
+                "form-email": "Your Email",
+                "form-message": "Your Message",
+                "form-submit": "Send Message",
+                
+                // Footer
+                "copyright": " 2025 NaviTechAid. All rights reserved."
+            },
+            he: {
+                // Hero section
+                "hero-title": "פתרונות AI חדשניים לשיפור זרימת המידע בחברה שלך.",
+                "hero-description": "אנו הופכים ידע טכני מורכב לכלים מעשיים, מפשטים תהליכים, ומבטיחים שהמידע הנכון מגיע לאנשים הנכונים.",
+                "contact-us": "צור קשר",
+                
+                // Services section
+                "service-1-title": "הנפשות טכניות והדמיות ויזואליות",
+                "service-1-desc": "🎬 אנימציות דו-ממד ותלת-ממד לתהליכי הרכבה, כיול ותחזוקה.<br> 🔍 המחשות ויזואליות לתהליכים בלתי נראים כמו אופטיקה ואלקטרומגנטיות.<br> 📚 יצירת סרטוני הדרכה להעברת ידע טכני בצורה ברורה",
+                "service-2-title": "פתרונות בינה מלאכותית מותאמים אישית",
+                "service-2-desc": "🤖 מערכות AI חכמות לשיפור הנגישות לידע והנחיות עבודה.<br> 💾 מודלי שפה גדולים (LLM) לא מקוונים לשאילתת מאגרי ידע פנימיים.<br> ⚙️ אוטומציה של תהליכי תיעוד והפקת תובנות לשיפור ביצועים",
+                "service-3-title": "חיבור מידע בין מחלקות ובין טריטוריות",
+                "service-3-desc": "🔗 גשר בין פיתוח וייצור–תרגום ידע הנדסי להוראות מעשיות.<br> 🌍 תרגום והנגשת ידע לצוותים גלובליים במגוון שפות.<br> 📡 אינטגרציה בין מערכות מידע לייעול זרימת מידע פנים-ארגוני",
+                "service-4-title": "ניתוח תהליכים ואופטימיזציה",
+                "service-4-desc": "📊 ניתוחי תהליכים באתר או מרחוק לזיהוי בעיות ושיפור היעילות.<br>⚡ ייעול תהליכי ייצור, עיצוב ואבטיפוס להפחתת טעויות וחסכון בזמן.",
+                "service-5-title": "שימור ידע והכשרה",
+                "service-5-desc": "📂 יצירת מאגרי ידע מובנים ונגישים לכל מחלקות הארגון.<br>🎓 בניית תוכניות הכשרה להעברת ידע מדויק ושימושי.",
+                "service-6-title": "כתיבה טכנית ותרגום",
+                "service-6-desc": "📑 הפקת תיעוד מקצועי כולל וידאו, PDF והנפשות.<br>🗣️ תרגום מסמכים טכניים למגוון שפות בהתאמה תרבותית.",
+                
+                // Process section
+                "process-title": "התהליך שלנו",
+                "process-desc": "אנו עוקבים אחר גישה פשוטה אך יעילה כדי להשיג תוצאות יוצאות דופן.",
+                "process-1-title": "הערכה",
+                "process-1-desc": "אנו מנתחים את הצרכים שלך ומזהים פערי ידע",
+                "process-2-title": "פיתוח",
+                "process-2-desc": "אנו יוצרים פתרונות הדרכה ותיעוד מותאמים אישית",
+                "process-3-title": "יישום",
+                "process-3-desc": "אנו מטמיעים פתרונות ומספקים הדרכה",
+                "process-4-title": "אופטימיזציה",
+                "process-4-desc": "אנו משפרים באופן מתמיד על סמך משוב ותוצאות",
+                "process-5-title": "ניהול",
+                "process-5-desc": "אנו מבטיחים הצלחה לטווח ארוך באמצעות תמיכה מתמשכת",
+                
+                // About section
+                "about-title": "למה לבחור ב-Navi Tech Aid?",
+                "about-desc": "המשימה המרכזית שלנו היא להבטיח שמומחיות טכנית ומעשית לא רק מתועדת, אלא מובנת במלואה ומועברת כך שתהיה נגישה בכל עת ובכל מקום שבו היא נדרשת.",
+                "feature-1-title": "גישור על פערי ידע",
+                "feature-1-desc": "אנו מעבירים מידע קריטי בין מחלקות, מגשרים על הפער בין הנדסה, ייצור, כספים ותמיכה.",
+                "feature-2-title": "הבנה חזותית",
+                "feature-2-desc": "לראות זה להבין. אנו הופכים מושגים מורכבים לאיורים, אנימציות ותיעוד מובנה.",
+                "feature-3-title": "יציבות לטווח ארוך",
+                "feature-3-desc": "העברת ידע ברורה מפחיתה שגיאות, משפרת יעילות ומבטיחה יציבות תפעולית ללא קשר לשינויי כוח אדם.",
+                
+                // Contact section
+                "contact-title": "צור קשר",
+                "contact-ready": "מוכנים לשנות את התיעוד הטכני וההדרכה שלכם?",
+                "contact-email": "אימייל:",
+                "contact-phone": "טלפון:",
+                "form-name": "השם שלך",
+                "form-email": "האימייל שלך",
+                "form-message": "ההודעה שלך",
+                "form-submit": "שלח הודעה",
+                
+                // Footer
+                "copyright": " 2025 NaviTechAid. כל הזכויות שמורות."
+            }
+        };
+        
+        // DOM elements with translatable content
+        const translatableElements = [
+            { selector: '.hero-title', key: 'hero-title' },
+            { selector: '.hero-description', key: 'hero-description' },
+            { selector: '.hero-cta', key: 'contact-us' },
+            { selector: '.process-content h2', key: 'process-title' },
+            { selector: '.process-content > p', key: 'process-desc' },
+            { selector: '.about-content-one h2', key: 'about-title' },
+            { selector: '.about-content-one > p', key: 'about-desc' },
+            { selector: '.contact-content h2', key: 'contact-title' },
+            { selector: '.contact-info-one > p:first-child', key: 'contact-ready' },
+            { selector: '.contact-info-one > p:nth-child(2)', key: 'contact-email', prefix: true },
+            { selector: '.contact-info-one > p:nth-child(3)', key: 'contact-phone', prefix: true },
+            { selector: '.footer-one-page p', key: 'copyright' }
+        ];
+        
+        // Service cards
+        const serviceCards = document.querySelectorAll('.service-card-one');
+        for (let i = 0; i < serviceCards.length; i++) {
+            translatableElements.push(
+                { selector: `.service-card-one:nth-child(${i+1}) h3`, key: `service-${i+1}-title` },
+                { selector: `.service-card-one:nth-child(${i+1}) p`, key: `service-${i+1}-desc` }
+            );
+        }
+        
+        // Process steps
+        const processSteps = document.querySelectorAll('.process-step-one');
+        for (let i = 0; i < processSteps.length; i++) {
+            translatableElements.push(
+                { selector: `.process-step-one:nth-child(${i+1}) h3`, key: `process-${i+1}-title` },
+                { selector: `.process-step-one:nth-child(${i+1}) p`, key: `process-${i+1}-desc` }
+            );
+        }
+        
+        // Feature items
+        const featureItems = document.querySelectorAll('.feature-item');
+        for (let i = 0; i < featureItems.length; i++) {
+            translatableElements.push(
+                { selector: `.feature-item:nth-child(${i+1}) h3`, key: `feature-${i+1}-title` },
+                { selector: `.feature-item:nth-child(${i+1}) p`, key: `feature-${i+1}-desc` }
+            );
+        }
+        
+        // Form elements
+        const formElements = [
+            { selector: '#name', key: 'form-name', attribute: 'placeholder' },
+            { selector: '#email', key: 'form-email', attribute: 'placeholder' },
+            { selector: '#message', key: 'form-message', attribute: 'placeholder' },
+            { selector: '.submit-btn', key: 'form-submit' }
+        ];
+        
+        // Function to apply translations
+        function applyTranslation(lang) {
+            // Set document direction based on language
+            document.documentElement.setAttribute('dir', lang === 'he' ? 'rtl' : 'ltr');
+            document.documentElement.setAttribute('lang', lang);
+            
+            // Set RTL class for styling
+            if (lang === 'he') {
+                document.body.classList.add('rtl');
+            } else {
+                document.body.classList.remove('rtl');
+            }
+            
+            // Update translatable elements
+            translatableElements.forEach(element => {
+                const elements = document.querySelectorAll(element.selector);
+                if (elements.length > 0) {
+                    elements.forEach(el => {
+                        if (element.attribute) {
+                            el.setAttribute(element.attribute, translations[lang][element.key]);
+                        } else {
+                            // Use innerHTML instead of textContent to properly render HTML tags
+                            el.innerHTML = translations[lang][element.key];
+                        }
+                    });
+                }
+            });
+            
+            // Update form elements
+            formElements.forEach(element => {
+                const el = document.querySelector(element.selector);
+                if (el) {
+                    if (element.attribute) {
+                        el.setAttribute(element.attribute, translations[lang][element.key]);
+                    } else {
+                        // Use innerHTML for form elements too
+                        el.innerHTML = translations[lang][element.key];
+                    }
+                }
+            });
+            
+            // Save language preference to localStorage
+            localStorage.setItem('preferredLanguage', lang);
+        }
+        
+        // Language selector functionality
+        const langButtons = document.querySelectorAll('.lang-btn');
+        langButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const lang = this.getAttribute('data-lang');
+                langButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                applyTranslation(lang);
+            });
+        });
+        
+        // Initialize with saved language or default to English
+        const savedLanguage = localStorage.getItem('preferredLanguage') || 'en';
+        const savedLangButton = document.querySelector(`.lang-btn[data-lang="${savedLanguage}"]`);
+        if (savedLangButton) {
+            langButtons.forEach(btn => btn.classList.remove('active'));
+            savedLangButton.classList.add('active');
+            applyTranslation(savedLanguage);
+        }
+        
         // Smooth scroll functionality
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -640,16 +996,6 @@
             window.scrollTo({
                 top: servicesSection.offsetTop,
                 behavior: 'smooth'
-            });
-        });
-        
-        // Language selector functionality
-        const langButtons = document.querySelectorAll('.lang-btn');
-        langButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                langButtons.forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
-                // Here you would typically switch content based on language
             });
         });
     });
