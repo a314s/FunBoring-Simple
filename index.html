@@ -967,8 +967,8 @@
             });
         });
         
-        // Initialize with saved language or default to English
-        const savedLanguage = localStorage.getItem('preferredLanguage') || 'en';
+        // Initialize with saved language or default to Hebrew
+        const savedLanguage = localStorage.getItem('preferredLanguage') || 'he';
         const savedLangButton = document.querySelector(`.lang-btn[data-lang="${savedLanguage}"]`);
         if (savedLangButton) {
             langButtons.forEach(btn => btn.classList.remove('active'));
